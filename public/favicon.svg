@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Linux Lab">
+  <rect width="64" height="64" rx="14" fill="#1F3B2D"/>
+  <path d="M24 13h16M27 13v13L16 47a5 5 0 0 0 4.6 7h22.8a5 5 0 0 0 4.6-7L37 26V13"
+        fill="none" stroke="#F3EFE0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M21 43h22" stroke="#F3EFE0" stroke-width="1.6" stroke-linecap="round" opacity=".38"/>
+  <path d="M25 45.5l5 4.5-5 4.5" fill="none" stroke="#FFB000" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M34 54.5h6" stroke="#FFB000" stroke-width="3" stroke-linecap="round"/>
+</svg>

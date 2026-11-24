@@ -1,0 +1,17 @@
+node_modules/
+dist/
+dist-ssr/
+coverage/
+*.local
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+*.log
+.vite/
+.artifacts/
+artifacts/
+.browser-profiles/
+public/images/*
+!public/images/README.md

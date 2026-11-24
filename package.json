@@ -1,0 +1,42 @@
+{
+  "name": "fedaa-linux-lab",
+  "private": true,
+  "version": "1.1.0",
+  "license": "UNLICENSED",
+  "author": "Fedaa Mohamed",
+  "type": "module",
+  "description": "Linux Lab (معمل لينكس) — an Arabic-first, browser-only Linux command-line lab with guided lessons, auto-grading and a simulated terminal.",
+  "scripts": {
+    "dev": "vite --port 5176 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --port 5176 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "demo:reset": "node scripts/demo-reset.mjs"
+  },
+  "dependencies": {
+    "@fontsource/changa": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/noto-naskh-arabic": "5.3.0",
+    "@xterm/addon-fit": "0.11.0",
+    "@xterm/xterm": "6.0.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "v86": "0.5.476"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.3.5",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.4",
+    "@vitejs/plugin-react": "6.3.0",
+    "jsdom": "29.1.1",
+    "tailwindcss": "4.3.5",
+    "typescript": "5.9.3",
+    "vite": "8.3.8",
+    "vitest": "5.1.1"
+  },
+  "engines": {
+    "node": ">=24.0.0"
+  }
+}

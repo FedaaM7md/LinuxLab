@@ -1,0 +1,17 @@
+{
+  "name": "Linux Lab",
+  "short_name": "Linux Lab",
+  "description": "دروس وطرفية للتدريب على سطر أوامر لينكس.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF8EF",
+  "theme_color": "#1F3B2D",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

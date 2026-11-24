@@ -1,0 +1,424 @@
+/*
+ * Linux Lab — design tokens and base styles.
+ * Copyright (c) 2026 Fedaa Mohamed. All rights reserved.
+ *
+ * Identity: classroom chalkboard meets retro terminal.
+ * Light theme = paper notebook. Dark theme = chalkboard.
+ */
+
+@import "@fontsource/changa/arabic-400.css";
+@import "@fontsource/changa/arabic-600.css";
+@import "@fontsource/changa/arabic-700.css";
+@import "@fontsource/changa/latin-400.css";
+@import "@fontsource/changa/latin-600.css";
+@import "@fontsource/changa/latin-700.css";
+@import "@fontsource/noto-naskh-arabic/arabic-400.css";
+@import "@fontsource/noto-naskh-arabic/arabic-600.css";
+@import "@fontsource/jetbrains-mono/latin-400.css";
+@import "@fontsource/jetbrains-mono/latin-700.css";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --lab-canvas: #fbf8ef;
+  --lab-canvas-deep: #f2ecdc;
+  --lab-surface: #fffdf6;
+  --lab-surface-2: #f6f1e2;
+  --lab-ink: #222222;
+  --lab-ink-soft: #43423a;
+  --lab-muted: #6a6759;
+  --lab-line: #ded5bf;
+  --lab-line-strong: #c2b697;
+  --lab-board: #1f3b2d;
+  --lab-board-deep: #16291f;
+  --lab-board-line: #2d5040;
+  --lab-chalk: #f3efe0;
+  --lab-chalk-soft: #dcd8c8;
+  --lab-amber: #ffb000;
+  --lab-amber-ink: #835600;
+  --lab-amber-soft: #fff0cd;
+  --lab-success: #2c6e4f;
+  --lab-success-soft: #e5f1e7;
+  --lab-danger: #a13b2c;
+  --lab-danger-soft: #fbe9e4;
+  --lab-focus: #8a5a00;
+  --lab-shadow: 0 18px 40px -30px rgb(34 34 34 / 0.45);
+  --lab-shadow-lift: 0 26px 60px -38px rgb(34 34 34 / 0.55);
+}
+
+.dark {
+  --lab-canvas: #16291f;
+  --lab-canvas-deep: #12211a;
+  --lab-surface: #1f3b2d;
+  --lab-surface-2: #274934;
+  --lab-ink: #f3efe0;
+  --lab-ink-soft: #ddd9c9;
+  --lab-muted: #aebcae;
+  --lab-line: #3b5c4a;
+  --lab-line-strong: #557662;
+  --lab-board: #12211a;
+  --lab-board-deep: #0e1a14;
+  --lab-board-line: #2d5040;
+  --lab-chalk: #f3efe0;
+  --lab-chalk-soft: #cfcbb9;
+  --lab-amber: #ffb000;
+  --lab-amber-ink: #ffc24d;
+  --lab-amber-soft: rgb(255 176 0 / 0.13);
+  --lab-success: #9ed7b1;
+  --lab-success-soft: rgb(158 215 177 / 0.12);
+  --lab-danger: #f2a495;
+  --lab-danger-soft: rgb(242 164 149 / 0.12);
+  --lab-focus: #ffb000;
+  --lab-shadow: 0 18px 40px -30px rgb(0 0 0 / 0.6);
+  --lab-shadow-lift: 0 26px 60px -36px rgb(0 0 0 / 0.75);
+}
+
+@theme inline {
+  --font-sans: "Changa", "Segoe UI", Tahoma, system-ui, sans-serif;
+  --font-display: "Changa", "Segoe UI", Tahoma, system-ui, sans-serif;
+  --font-body: "Noto Naskh Arabic", "Changa", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Cascadia Mono", Consolas, "Liberation Mono", monospace;
+
+  --color-canvas: var(--lab-canvas);
+  --color-canvas-deep: var(--lab-canvas-deep);
+  --color-surface: var(--lab-surface);
+  --color-surface-2: var(--lab-surface-2);
+  --color-ink: var(--lab-ink);
+  --color-ink-soft: var(--lab-ink-soft);
+  --color-muted: var(--lab-muted);
+  --color-line: var(--lab-line);
+  --color-line-strong: var(--lab-line-strong);
+  --color-board: var(--lab-board);
+  --color-board-deep: var(--lab-board-deep);
+  --color-board-line: var(--lab-board-line);
+  --color-chalk: var(--lab-chalk);
+  --color-chalk-soft: var(--lab-chalk-soft);
+  --color-amber: var(--lab-amber);
+  --color-amber-ink: var(--lab-amber-ink);
+  --color-amber-soft: var(--lab-amber-soft);
+  --color-success: var(--lab-success);
+  --color-success-soft: var(--lab-success-soft);
+  --color-danger: var(--lab-danger);
+  --color-danger-soft: var(--lab-danger-soft);
+
+  --radius-note: 0.75rem;
+  --shadow-note: var(--lab-shadow);
+  --shadow-lift: var(--lab-shadow-lift);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    --header-h: 4.5rem;
+  }
+
+  body {
+    @apply bg-canvas font-sans text-ink antialiased;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgb(255 176 0 / 0.05), transparent 26rem),
+      radial-gradient(circle at 88% 0%, rgb(31 59 45 / 0.06), transparent 30rem);
+    min-height: 100dvh;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(circle at 12% 18%, rgb(255 176 0 / 0.045), transparent 26rem),
+      radial-gradient(circle at 88% 0%, rgb(243 239 224 / 0.04), transparent 30rem);
+  }
+
+  ::selection {
+    background: var(--lab-amber);
+    color: #222222;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--lab-focus);
+    outline-offset: 2px;
+  }
+
+  /* Focus rings on board-green surfaces use the amber accent. */
+  header :focus-visible,
+  .terminal-chrome :focus-visible,
+  .terminal-shell:focus-visible {
+    outline-color: var(--lab-amber);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+    text-wrap: balance;
+  }
+
+  [dir="rtl"] .lesson-prose {
+    font-family: var(--font-body);
+    font-size: 1.03em;
+    line-height: 1.95;
+  }
+
+  .lesson-prose {
+    @apply text-ink-soft;
+    line-height: 1.8;
+  }
+
+  code,
+  pre,
+  kbd,
+  samp {
+    font-family: var(--font-mono);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .paper {
+    @apply rounded-[var(--radius-note)] border border-line bg-surface shadow-note;
+  }
+
+  .paper-2 {
+    @apply rounded-[var(--radius-note)] border border-line bg-surface-2;
+  }
+
+  .eyebrow {
+    @apply font-sans text-[10px] font-bold uppercase tracking-[0.18em] text-muted;
+  }
+
+  [dir="rtl"] .eyebrow {
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  .btn,
+  .btn-amber,
+  .btn-outline,
+  .btn-quiet,
+  .btn-icon,
+  .btn-danger {
+    @apply inline-flex cursor-pointer items-center justify-center gap-2 rounded-lg border border-transparent px-3.5 py-2 font-sans text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-45;
+  }
+
+  .btn-amber {
+    @apply border-amber bg-amber text-[#222222] hover:bg-[#ffc033] active:bg-[#e89f00];
+  }
+
+  .btn-outline {
+    @apply border-line-strong bg-surface text-ink hover:border-ink/40 hover:bg-surface-2;
+  }
+
+  .btn-quiet {
+    @apply text-muted hover:bg-canvas-deep hover:text-ink;
+  }
+
+  .btn-danger {
+    @apply bg-danger text-white hover:brightness-110;
+  }
+
+  .btn-icon {
+    @apply h-9 w-9 border-line bg-surface p-0 text-ink-soft hover:bg-surface-2;
+  }
+
+  .tag {
+    @apply inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 font-sans text-[10px] font-bold uppercase tracking-[0.12em];
+  }
+
+  .tag-amber {
+    @apply border-amber/60 bg-amber-soft text-amber-ink;
+  }
+
+  .tag-board {
+    @apply border-chalk/25 bg-white/5 text-chalk-soft;
+  }
+
+  .tag-demo {
+    @apply border-amber/50 bg-amber/10 text-amber;
+  }
+
+  .line-rule {
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--lab-line-strong) 0 6px,
+      transparent 6px 12px
+    );
+    height: 1px;
+  }
+
+  .notebook {
+    position: relative;
+    background-color: var(--lab-surface);
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.9rem - 1px),
+      rgb(194 182 151 / 0.18) calc(1.9rem - 1px),
+      rgb(194 182 151 / 0.18) 1.9rem
+    );
+    background-size: 100% 1.9rem;
+  }
+
+  .dark .notebook {
+    background-image: linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.9rem - 1px),
+      rgb(85 118 98 / 0.22) calc(1.9rem - 1px),
+      rgb(85 118 98 / 0.22) 1.9rem
+    );
+  }
+
+  .notebook::before {
+    content: "";
+    position: absolute;
+    inset-block: 1.1rem;
+    inset-inline-start: 1.55rem;
+    width: 1px;
+    background: rgb(161 59 44 / 0.32);
+    pointer-events: none;
+  }
+
+  @media (min-width: 640px) {
+    .notebook::before {
+      inset-inline-start: 2.15rem;
+    }
+  }
+
+  .notebook-body {
+    position: relative;
+    padding-inline-start: 0.35rem;
+  }
+
+  @media (min-width: 640px) {
+    .notebook-body {
+      padding-inline-start: 1.1rem;
+    }
+  }
+
+  .hand-ring {
+    border-radius: 46% 54% 52% 48% / 48% 46% 54% 52%;
+  }
+
+  .highlight {
+    background: linear-gradient(
+      to bottom,
+      transparent 0 52%,
+      var(--lab-amber-soft) 52% 92%,
+      transparent 92%
+    );
+    padding-inline: 0.12em;
+  }
+
+  .terminal-shell .xterm {
+    padding: 0.8rem 0.9rem 1rem;
+  }
+
+  .terminal-shell .xterm-viewport {
+    scrollbar-color: rgb(255 176 0 / 0.35) transparent;
+    scrollbar-width: thin;
+  }
+
+  .terminal-shell .xterm-viewport::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  .terminal-shell .xterm-viewport::-webkit-scrollbar-thumb {
+    border-radius: 9999px;
+    background-color: rgb(255 176 0 / 0.3);
+  }
+
+  .crt-lines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      rgb(243 239 224 / 0.025) 0 1px,
+      transparent 1px 3px
+    );
+  }
+
+  .step-scroll {
+    scrollbar-width: thin;
+  }
+
+  .mobile-check {
+    bottom: calc(0.75rem + env(safe-area-inset-bottom, 0px));
+  }
+
+  body:has([role="dialog"]) .mobile-check {
+    display: none;
+  }
+
+  .code-line {
+    @apply block overflow-x-auto whitespace-pre rounded-md border border-board-line bg-board-deep px-2.5 py-1.5 font-mono text-[12px] leading-relaxed text-chalk;
+  }
+
+  .code-line::before {
+    content: "$ ";
+    color: var(--lab-amber);
+    user-select: none;
+  }
+}
+
+@layer utilities {
+  .ltr-only {
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  .numbers {
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /*
+   * Arabic must not inherit Latin letter-spacing or uppercase tracking: both
+   * break joining and look wrong. Codes keep their own mono spacing.
+   */
+  [dir="rtl"] :where(h1, h2, h3, h4, p, span, a, button, label, summary, li, dt, dd, td, th, small, strong, em, blockquote) {
+    letter-spacing: normal !important;
+  }
+
+  [dir="rtl"] .eyebrow,
+  [dir="rtl"] .tag {
+    text-transform: none !important;
+  }
+}
+
+@media print {
+  header,
+  footer,
+  #terminal,
+  [data-print-hide] {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #111111 !important;
+  }
+
+  main {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  .paper,
+  .notebook {
+    border: 1px solid #cccccc !important;
+    box-shadow: none !important;
+    background-image: none !important;
+  }
+
+  .notebook::before {
+    display: none;
+  }
+}

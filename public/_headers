@@ -1,0 +1,22 @@
+# Linux Lab production headers (Netlify / Cloudflare Pages format).
+# Copyright (c) 2026 Fedaa Mohamed. All rights reserved.
+#
+# These headers complement the production CSP meta tag injected at build time.
+# HSTS is ignored by browsers over plain HTTP; use HTTPS in production.
+
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self' blob:; media-src 'self'; form-action 'self'; frame-ancestors 'none'
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: no-referrer
+  Permissions-Policy: accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Permitted-Cross-Domain-Policies: none
+
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/demo-reset.json
+  Cache-Control: no-store
